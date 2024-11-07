@@ -1,0 +1,17 @@
+from fastapi import FastAPI, UploadFile, File
+from chromadb import Client
+from sentence_transformers import SentenceTransformer
+
+app = FastAPI()
+chroma_client = Client()
+model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+
+@app.post("/upload/")
+async def upload_document(file: UploadFile = File(...)):
+    # Logic to save the document and generate embeddings
+    pass
+
+@app.get("/query/")
+async def query_documents(query: str):
+    # Logic to query the vector database
+    pass
